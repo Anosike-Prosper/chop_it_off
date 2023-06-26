@@ -6,9 +6,10 @@ function RedisDb () {
     let client: RedisClientType;
 
     return async function RedisDb(){
-        console.log(client)
-        if(client) return client; 
-
+        
+        if(client) {
+            return client; 
+        }
         client = createClient({ url: config.REDIS ?? "" });
 
         await client.connect();
