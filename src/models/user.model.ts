@@ -8,12 +8,10 @@ interface IUser {
   password: string;
   correctPassword(candidatePassword: string, userPassword: string): boolean;
 
-  // urls: Types.ObjectId;
+  
 }
 
-// interface userModel extends Model<IUser> {
 
-// }
 
 // 2. Create a Schema corresponding to the document interface.
 const userSchema = new Schema<IUser>(
