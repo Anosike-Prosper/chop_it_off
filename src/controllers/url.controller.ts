@@ -6,7 +6,6 @@ import { urlInfoModel } from "../models/url.info";
 
 import qrcode from 'qrcode'
 import { nanoid } from "nanoid";
-// import { findUser } from "../services/url.services";
 import { AppError } from "../errors/appError";
 import { StatusCodes } from "http-status-codes";
 import { findone } from "../services/url.services";
@@ -18,12 +17,12 @@ const createUrl = async (req: Request & { user?: { id?: string } }, res: Respons
 
   try {
     const { longurl, customId } = req.body;
-    console.log(longurl, customId)
+    
     const shortId = !customId ? nanoid(10) : customId;
 
-    const shortUrl = `${config.BASE_URL}/url/${shortId}`;
+    const shortUrl = `${config.BASE_URL}/${config.URL_PATH}/${shortId}`;
     const ownerId = req?.user?.id
-    // console.log(typeof ownerId)
+    
 
     const findShortId= await urlModel.findOne({
       shortId
@@ -84,14 +83,11 @@ const getqrCode = async(req:Request & { user?: { id?: string } }, res:Response, 
     const ownerId = req?.user?.id as string
     const shortId = nanoid(10);
     
-    const shortUrl = `localhost:4000/url/${shortId}`;
+    const shortUrl = `${config.BASE_URL}/${config.URL_PATH}/${shortId}`;
     
     
     
-    // const existingUrl = await urlModel.findOne({
-    //   longurl: longurl,
-    //   ownerId: ownerId,
-    // });
+
     const existingUrl = await findone(longurl, ownerId)
     
     if (existingUrl) {
@@ -131,7 +127,7 @@ const getqrCode = async(req:Request & { user?: { id?: string } }, res:Response, 
       
       // const data = await findone(id, ownerId )
       const data = await urlModel.findOne({_id:id, ownerId})
-      console.log(data)
+      
   
       if(!data){
         throw new AppError(
