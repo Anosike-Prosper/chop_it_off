@@ -7,6 +7,7 @@ const Mongoose_URL = process.env.DB_URL || ''
 const JWT_EXPIRY= process.env.JWT_EXPIRES
 const SECRET  = process.env.SECRET_KEY || "our secret"
 const REDIS= process.env.REDIS_URL
+const URL_PATH=process.env.URL_PATH
 
 export default {
   PORT,
@@ -15,7 +16,8 @@ export default {
   Mongoose_URL,
   JWT_EXPIRY,
   SECRET,
-  REDIS
+  REDIS,
+  URL_PATH
 };
 
 
