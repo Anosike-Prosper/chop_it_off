@@ -29,8 +29,7 @@ const handleDuplicateFieldsDb = (err:any) => {
 };
 
 const sendErrorDev = (err:any, req:Request, res:Response, next:NextFunction) => {
-  console.log(err);
-  console.log("i am in the dev error handler");
+  
   const statusCode = err.statusCode || 500;
   const status = err.status || "error";
   res.status(statusCode).json({
@@ -41,7 +40,7 @@ const sendErrorDev = (err:any, req:Request, res:Response, next:NextFunction) => 
 };
 
 const sendErrorProd = (err:any, req:Request, res:Response, next:NextFunction) => {
-  console.log("i am in the prod error handler");
+  
   /*Defined Errors*/
   if (err.name === "ValidationError") {
     err = prodValidationError(err);
@@ -72,13 +71,8 @@ const sendErrorProd = (err:any, req:Request, res:Response, next:NextFunction) =>
   }
 };
 
-// if (process.env.NODE_ENV === "development") {
-//   globalError = sendErrorDev;
-// } else {
-//   globalError = sendErrorProd;
-// }
 
-// export {globalError };
+
 
 // // module.exports =
 module.exports= process.env.NODE_ENV === "development" ? sendErrorDev : sendErrorProd;
