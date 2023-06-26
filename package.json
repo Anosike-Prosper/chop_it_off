@@ -6,7 +6,7 @@
   "scripts": {
     "test": "cross-env NODE_ENV=test jest --detectOpenHandles --watchAll",
     "build": "tsc --incremental",
-    "start": "cross-env NODE_ENV=production ts-node dist/server.js",
+    "start": "cross-env NODE_ENV=production ts-node src/server.ts",
     
     "dev": "cross-env NODE_ENV=development ts-node src/server.ts"
   },
