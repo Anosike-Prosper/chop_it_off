@@ -1,8 +1,5 @@
 
 import jwt from "jsonwebtoken";
-
-// import * as dotenv from "dotenv";
-// dotenv.config();
 import config from "../config/config";
 
 const createToken = (id: string) => {
