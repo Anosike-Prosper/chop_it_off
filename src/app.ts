@@ -9,6 +9,7 @@ import cors from "cors"
 import config from "./config/config";
 const globalError = require('./errors/errorHandler')
 import cache from "./config/cache";
+require("dotenv").config();
 
 
 
@@ -17,16 +18,25 @@ import * as yaml from 'yaml';
 import swaggerJSDoc from "swagger-jsdoc";
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from "./swagger.json";
+import path from "path";
 
 
 export const app = express();
 require('./middlewares/auth')
 
 app.use(express.json());
+app.use(express.static(path.join(__dirname,'FRONTEND/provider/')))
 
 app.use(cors())
 
 app.use(passport.initialize());
+
+
+if(process.env.NODE_ENV !=='test'){
+  console.log(process.env.NODE_ENV)
+
+  app.use(limiter)
+}
 
 // const options = {
 //     definition: {
@@ -66,9 +76,7 @@ app.use(passport.initialize());
 connectToMongoDB();
 cache();
 
-app.get('/',(req:Request,res:Response,next:NextFunction)=>{
-console.log(config.PORT)
-})
+
 // app.use();
 app.use("/auth", authRoutes);
 app.use("/url", urlRoutes);
