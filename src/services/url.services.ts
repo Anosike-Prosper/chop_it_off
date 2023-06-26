@@ -3,38 +3,38 @@ import { urlInfoModel } from "../models/url.info";
 import { StatusCodes } from "http-status-codes";
 import { AppError } from "../errors/appError";
 
-const updateURLInfo = () => {
 
-}
 
 const getLongUrl = async (shortId: string, ip: string, agent: any) => {
-  const data= await urlModel.find({shortId})
-  const url_id=  data[0].id
+  const data = await urlModel.findOne({shortId})
 
-  if(data.length <= 0){
+  if(!ip || !agent){
+    throw new AppError('Ip or user-agent must be provided', 500)
+  }
 
+  if(!data){
     throw new AppError(
       "Long url does not exist",
       StatusCodes.CONFLICT
     );
-   
   }
 
 
-  data[0].click = data[0].click.valueOf() + 1
+  data.click = data?.click.valueOf() + 1
 
   await urlInfoModel.create({
     ip,
     agent,
-    url_Id: data[0].id,
+    url_Id: data.id,
   });
 
-  data.forEach( async(document)=>{
-     await document.save()
-  })
+  
+  await data.save()
 
   return data
   };
+
+  
 
   const findone = async (id:string, userId:string)=>{
     const data = await urlModel.findOne({longurl:id, ownerId:userId})
