@@ -43,4 +43,4 @@ const urlSchema = new Schema<IUrl>(
 // 3. Create a Model.
 const urlModel = model<IUrl>("Url", urlSchema);
 
-export { urlModel };
+export { urlModel, IUrl };
