@@ -1,10 +1,9 @@
-// const mongoose = require("mongoose");
 
 import mongoose from "mongoose";
 import config from "./config";
 
 const MONGO_URL = config.Mongoose_URL;
-console.log('mongoooooooooooo',MONGO_URL)
+
 export function connectToMongoDB() {
   mongoose.set("strictQuery", false);
 
