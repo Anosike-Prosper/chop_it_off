@@ -12,10 +12,6 @@ import { createToken } from "../utils/helper";
 
 
 
-
-
-
-
 const signUp = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { email, password, username } = req.body;
@@ -29,7 +25,7 @@ const signUp = async (req: Request, res: Response, next: NextFunction) => {
       );
     }
 
-    // const data = await userModel.create({ email, username, password });
+    
     const data = await createUser({email, username, password })
 
     
