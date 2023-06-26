@@ -7,7 +7,6 @@
     "test": "cross-env NODE_ENV=test jest --detectOpenHandles --watchAll",
     "build": "tsc --incremental",
     "start": "cross-env NODE_ENV=production ts-node src/server.ts",
-    
     "dev": "cross-env NODE_ENV=development ts-node src/server.ts"
   },
   "keywords": [],
@@ -37,6 +36,7 @@
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^4.6.3",
     "ts-jest": "^29.1.0",
+    "ts-node": "^10.9.1",
     "util": "^0.12.5",
     "uuid": "^9.0.0",
     "yaml": "^2.3.1"
