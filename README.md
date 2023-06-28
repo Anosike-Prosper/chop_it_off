@@ -1,6 +1,6 @@
 # CUSTOM URL SHORTENER
 
-this is a custom url shortener that allows user customize and shorten their long url and also provides them analytics of the shortened Url.
+This is a custom url shortener that allows user customize and shorten their long url and also provides them analytics of the shortened Url. Users are also able to generate a qrcode inplace of a short url
 
 # Stack
 <div align="center">
@@ -13,17 +13,13 @@ this is a custom url shortener that allows user customize and shorten their long
 
 </div>
 
-<div align="center">
 
 
-<a href="">![Swagger](https://img.shields.io/badge/-Swagger-%23Clojure?style=for-the-badge&logo=swagger&logoColor=white)</a>
+## Useful Links.
 
-</div>
-
-<!-- ## Useful Links. -->
-
-<!-- - [Swagger Documentation](https://vic-nb5a.onrender.com/api) -->
-<!-- - [Hosted Api](https://vic-nb5a.onrender.com) -->
+- [Stoplight Documentation](https://silk-k.stoplight.io/docs/url-shortner)
+- [Hosted Api Frontend](https://frontsilk.onrender.com/)
+- [Hosted Api Backend](https://silkvall.onrender.com)
 
 ---
 
@@ -54,7 +50,11 @@ $ npm run start
 ```
 
 ## Testing
-To run E2E tests,
+To run integration tests,
+```javascript
+$ npm run test:e2e
+```
+To run Unit tests,
 ```javascript
 $ npm run test
 ```
@@ -72,7 +72,7 @@ $ npm run test
 ### ``` Shorten Long Url ```
  This feature allows users to shorten their long Urls by pasting the long Url to the server and a shorter Url gets automatically generated. The shortened Url is designed to be as short as possible, making it easy for users to share on social media or through other channels.
 
-### ``` Custom Url ``` <!--This Feature is currently not available  -->
+### ``` Custom Url ``` 
 
  This feature also allows users to customize their their shortened Urls. Users can choose their own custom name(custom id) and customize the Url to reflect their brand or content. This feature is particularly useful for individuals or small businesses who want to create branded linksfor their brands.
 
